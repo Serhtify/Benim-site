@@ -1,3 +1,37 @@
-BAKIM BAŞLAMIŞTIR 
-
-~ SERHTİFY TURKHİS HTML CSS DEVELOPER
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt ve Giriş Sistemi</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Serhtify Web</h1>
+        <form id="registerForm">
+            <h2>Kayıt Ol</h2>
+            <input type="text" id="regName" placeholder="İsim" required>
+            <input type="email" id="regEmail" placeholder="E-posta" required>
+            <input type="password" id="regPassword" placeholder="Şifre" required>
+            <input type="password" id="regConfirmPassword" placeholder="Şifre Onayı" required>
+            <button type="submit">Kayıt Ol</button>
+        </form>
+        <div class="switch">
+            <a href="girisyap.html" id="showLogin">Hesabınız Var Mı? Giriş Yap</a>
+        </div>
+        <form id="loginForm" style="display: none;">
+            <h2>Giriş Yap</h2>
+            <input type="text" id="loginName" placeholder="İsim" required>
+            <input type="email" id="loginEmail" placeholder="E-posta" required>
+            <input type="password" id="loginPassword" placeholder="Şifre" required>
+            <button type="submit">Giriş Yap</button>
+        </form>
+        <div class="switch" style="display: none;">
+            <a href="index.html" id="showRegister">Hesabınız Yok Mu? Kayıt Ol</a>
+        </div>
+        <div id="message" class="message" style="display: none;"></div>
+    </div>
+    <script src="gky.js"></script>
+</body>
+</html>
