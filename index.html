@@ -1,38 +1,51 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kayıt ve Giriş Sistemi</title>
-    <link rel="stylesheet" href="kayıt.css">
-    <link rel="icon" href="https://cdn.glitch.global/49985271-3ed6-4dcb-b186-e2ea10fbb50e/bx-home.svg?v=1728126557610"
+    <link rel="icon" href="assets/imgs/inaya_pfp.gif">
+    
+    <!-- Title -->
+    <title>🌴 ・ Serhtify</title>
+
+    <!-- Css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Javascript -->
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous">
+
 </head>
 <body>
-    <div class="container">
-        <h1>Serhtify Web</h1>
-        <form id="registerForm">
-            <h2>Kayıt Ol</h2>
-            <input type="text" id="regName" placeholder="İsim" required>
-            <input type="email" id="regEmail" placeholder="E-posta" required>
-            <input type="password" id="regPassword" placeholder="Şifre" required>
-            <input type="password" id="regConfirmPassword" placeholder="Şifre Onayı" required>
-            <button type="submit">Kayıt Ol</button>
-        </form>
-        <div class="switch">
-            <a href="giris.html" id="showLogin">Hesabınız Var Mı? Giriş Yap</a>
-        </div>
-        <form id="loginForm" style="display: none;">
-            <h2>Giriş Yap</h2>
-            <input type="text" id="loginName" placeholder="İsim" required>
-            <input type="email" id="loginEmail" placeholder="E-posta" required>
-            <input type="password" id="loginPassword" placeholder="Şifre" required>
-            <button type="submit">Giriş Yap</button>
-        </form>
-        <div class="switch" style="display: none;">
-            <a href="index.html" id="showRegister">Hesabınız Yok Mu? Kayıt Ol</a>
-        </div>
-        <div id="message" class="message" style="display: none;"></div>
-    </div>
-    <script src="gky.js"></script>
+
+    <header>
+        <nav>
+            <div class="header_logo">
+                <img src="https://cdn.glitch.global/49985271-3ed6-4dcb-b186-e2ea10fbb50e/images%20(2).jpeg?v=1728108488807" alt="" srcset="">
+            </div>
+            <div class="header_links">
+                <ul class="nav_links">
+                    <li class="nav_link"><a href="index.html">AnaSayfa</a></li>
+                    <li class="nav_link"><a href="tools/ools.html">Tools (yakında)</a></li>
+                    <li class="nav_link"><a href="yayın.html">Maçlar (yakında)</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="main">
+        <img src="https://cdn.glitch.global/49985271-3ed6-4dcb-b186-e2ea10fbb50e/38188246f0f2efe610889c5b4ecf1789.jpg?v=1728108782768" alt="" srcset="">
+        <span>Serhtify Web</span>
+        <p>16 Yaşında Türk Developer -Serhat 💜</p>
+        <ul>
+            <li><a target="_blank" href="https://discord.gg/1999"><i class="fab fa-discord"></i></a></li>
+            <li><a target="_blank" href="https://github.com/@serhtify"><i class="fab fa-github"></i></a></li>
+            <li><a target="_blank" href="https://www.youtube.com/channel/@serhtify"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+    </section>
+
 </body>
 </html>
