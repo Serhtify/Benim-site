@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BRT Code - Yönetici Girişi</title>
+    <title>Serhat.Dev.tc - Yönetici Girişi</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,7 +55,7 @@
 <body>
 
 <div class="container">
-    <h2>Yönetici Girişi</h2>
+    <h2>Maç Yönetici Girişi</h2>
     <input type="text" id="admin-username" placeholder="Kullanıcı Adı" required>
     <input type="password" id="admin-password" placeholder="Şifre" required>
     <input type="text" id="verification-code" placeholder="Doğrulama Kodu" required>
@@ -74,7 +74,7 @@
         const code = document.getElementById('verification-code').value;
 
         if (username === adminUsername && password === adminPassword && code === verificationCode) {
-            window.location.href = "yayın.html"; // Kontrol paneline yönlendirme
+            window.location.href = "sa.html"; // Kontrol paneline yönlendirme
         } else {
             document.getElementById('admin-message').innerText = "Hatalı giriş! Lütfen bilgilerinizi kontrol edin.";
         }
