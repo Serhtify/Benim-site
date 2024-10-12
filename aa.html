@@ -3,80 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kayıt Ol</title>
+    <title>RUDS Development</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #0b1223; /* Arka plan rengi */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-color: #121212; /* Arka plan rengi */
+            color: white;
             margin: 0;
-        }
-        .form-container {
-            background-color: #182544; /* Form arka plan rengi */
-            border-radius: 10px;
             padding: 20px;
-            width: 300px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
-        .form-container h1 {
+        h1 {
             text-align: center;
-            color: white;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
-        .form-container h2 {
-            color: #00b7ff;
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: #1e1e1e; /* Kart arka plan rengi */
+            border-radius: 10px;
+            padding: 15px;
             text-align: center;
-            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
-        .form-container input[type="text"],
-        .form-container input[type="email"],
-        .form-container input[type="password"] {
-            width: 100%;
-            padding: 10px;
+        .card img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .card h2 {
+            font-size: 18px;
             margin: 10px 0;
-            border-radius: 5px;
-            border: none;
-            background-color: #333f58; /* Input arka plan rengi */
-            color: white;
         }
-        .form-container input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            background: linear-gradient(90deg, #0066ff, #00ccff);
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
+        .card p {
+            font-size: 14px;
+            margin-bottom: 15px;
         }
-        .form-container p {
-            text-align: center;
-            margin-top: 10px;
+        .button {
+            background-color: #007bff; /* Buton rengi */
             color: white;
-        }
-        .form-container a {
-            color: #00b7ff;
+            padding: 10px 15px;
             text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3; /* Buton hover rengi */
         }
     </style>
 </head>
 <body>
 
-    <div class="form-container">
-        <h1>Owlx</h1>
-        <h2>+ Kayıt Ol</h2>
-        <form action="#">
-            <input type="text" placeholder="İsim" required>
-            <input type="email" placeholder="E-posta" required>
-            <input type="password" placeholder="Şifre" required>
-            <input type="password" placeholder="Şifre Onayı" required>
-            <input type="submit" value="Kayıt Ol">
-        </form>
-        <p>Hesabınız Var Mı? <a href="girişyap.html">Giriş Yap</a></p>
-    </div>
+    <h1>Serhat Dev Tools</h1>
+
+    <div class="container">
+        <div class="card">
+            <img src= "https://cdn.glitch.global/bed0eed0-839b-45f6-a61a-094000ad481e/20241005_121536.jpg?v=1728743607864" alt="Token Checker">
+            <h2>Token Checker</h2>
+            <p>Token Lerin Çalışıp Çalışmadığını kontrol Eder</p>
+            <a href="tools/tools.html" class="button">Deneyin</a>
+        </div>
+
+        <div class="card"
+            <img src= "https://www.example.com/qr-logo.png" alt="BluTv">
+            <h2>BluTv Checker</h2>
+            <p>En Kısa Surede Hizmetinizde</p>
+            <a href="https://www.example.com/qr-api" class="button">Deneyin</a>
+        </div>
 
 </body>
 </html>
