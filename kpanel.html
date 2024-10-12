@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontrol Paneli - Serhat Dev</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 48px;
+            text: rainbow-text 10s linear infinite;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #28a745;
+            color: white;
+        }
+        .button {
+            background-color: red;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        @keyframes rainbow-text {
+            0% { color: red; transform: rotate(0deg); }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Panel</h1>
+
+<h2>Kod Ekle</h2>
+<div class="input-group">
+    <input type="text" id="codeName" placeholder="Kodun Adı" />
+    <input type="text" id="codeContent" placeholder="Kodun İçeriği" />
+    <input type="text" id="codeDate" placeholder="Atılma Tarihi" />
+    <button class="button" onclick="addCode()">Ekle</button>
+</div>
+
+<h2>Kodlar Listesi</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Kodun Adı</th>
+            <th>Kodun İçeriği</th>
+            <th>Atılma Tarihi</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody id="codeTableBody">
+        <!-- Kod verileri buraya eklenecek -->
+    </tbody>
+</table>
+
+<h2>API Ekle</h2>
+<div class="input-group">
+    <input type="text" id="apiName" placeholder="API Adı" />
+    <input type="text" id="apiLink" placeholder="API Linki" />
+    <input type="text" id="apiDate" placeholder="Atılma Tarihi" />
+    <button class="button" onclick="addApi()">Ekle</button>
+</div>
+
+<h2>Apiler Listesi</h2>
+<table>
+    <thead>
+        <tr>
+            <th>API Adı</th>
+            <th>API Linki</th>
+            <th>Atılma Tarihi</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody id="apiTableBody">
+        <!-- API verileri buraya eklenecek -->
+    </tbody>
+</table>
+
+<h2>Kullanıcılar</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Kullanıcı Adı</th>
+            <th>Devre Dışı Bırak</th>
+            <th>Hesabı Aç</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody id="userTableBody">
+        <!-- Kullanıcı verileri buraya eklenecek -->
+    </tbody>
+</table>
+
+<script>
+    // Kod ve API ekleme, silme işlevleri
+    function loadCodes() {
+        const codes = JSON.parse(localStorage.getItem('codes')) || [];
+        const codeTableBody = document.getElementById('codeTableBody');
+        codeTableBody.innerHTML = ''; // Önceki verileri temizle
+
+        codes.forEach((code, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${code.name}</td>
+                <td>${code.content}</td>
+                <td>${code.date}</td>
+                <td><button class="button" onclick="deleteCode(${index})">Sil</button></td>
+            `;
+            codeTableBody.appendChild(row);
+        });
+    }
+
+    function loadApis() {
+        const apis = JSON.parse(localStorage.getItem('apis')) || [];
+        const apiTableBody = document.getElementById('apiTableBody');
+        apiTableBody.innerHTML = ''; // Önceki verileri temizle
+
+        apis.forEach((api, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${api.name}</td>
+                <td>${api.link}</td>
+                <td>${api.date}</td>
+                <td><button class="button" onclick="deleteApi(${index})">Sil</button></td>
+            `;
+            apiTableBody.appendChild(row);
+        });
+    }
+
+    function addCode() {
+        const name = document.getElementById('codeName').value;
+        const content = document.getElementById('codeContent').value;
+        const date = document.getElementById('codeDate').value;
+        const password = prompt("Şifreyi girin:");
+
+        if (password === "1536") {
+            const codes = JSON.parse(localStorage.getItem('codes')) || [];
+            codes.push({ name, content, date });
+            localStorage.setItem('codes', JSON.stringify(codes));
+            loadCodes(); // Yeniden yükle
+            document.getElementById('codeName').value = ''; // Giriş alanını temizle
+            document.getElementById('codeContent').value = '';
+            document.getElementById('codeDate').value = '';
+        } else {
+            alert("Yanlış şifre!");
+        }
+    }
+
+    function addApi() {
+        const name = document.getElementById('apiName').value;
+        const link = document.getElementById('apiLink').value;
+        const date = document.getElementById('apiDate').value;
+        const password = prompt("Şifreyi girin:");
+
+        if (password === "1536") {
+            const apis = JSON.parse(localStorage.getItem('apis')) || [];
+            apis.push({ name, link, date });
+            localStorage.setItem('apis', JSON.stringify(apis));
+            loadApis(); // Yeniden yükle
+            document.getElementById('apiName').value = ''; // Giriş alanını temizle
+            document.getElementById('apiLink').value = '';
+            document.getElementById('apiDate').value = '';
+        } else {
+            alert("Yanlış şifre!");
+        }
+    }
+
+    function deleteCode(index) {
+        const password = prompt("Şifreyi girin:");
+        if (password === "1536") {
+            const codes = JSON.parse(localStorage.getItem('codes')) || [];
+            codes.splice(index, 1); // Silme işlemi
+            localStorage.setItem('codes', JSON.stringify(codes));
+            loadCodes(); // Yeniden yükle
+        } else {
+            alert("Yanlış şifre!");
+        }
+    }
+
+    function deleteApi(index) {
+        const password = prompt("Şifreyi girin:");
+        if (password === "1536") {
+            const apis = JSON.parse(localStorage.getItem('apis')) || [];
+            apis.splice(index, 1); // Silme işlemi
+            localStorage.setItem('apis', JSON.stringify(apis));
+            loadApis(); // Yeniden yükle
+        } else {
+            alert("Yanlış şifre!");
+        }
+    }
+
+    // Kullanıcı işlemleri
+    function loadUsers() {
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const userTableBody = document.getElementById('userTableBody');
+        userTableBody.innerHTML = ''; // Önceki verileri temizle
+
+        users.forEach((user, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${user.name}</td>
+                <td><button class="button" onclick="deactivateUser(${index})">Devre Dışı Bırak</button></td>
+                <td><button class="button" onclick="activateUser(${index})">Hesabı Aç</button></td>
+                <td><button class="button" onclick="deleteUser(${index})">Sil</button></td>
+            `;
+            userTableBody.appendChild(row);
+        });
+    }
+
+    function deactivateUser(index) {
+		const users = JSON.parse(localStorage.getItem('users')) || [];
+        const password = prompt("Şifreyi girin:");
+
+        if (password === "1536") {
+            users[index].active = false; // Kullanıcıyı devre dışı bırak
+            localStorage.setItem('users', JSON.stringify(users));
+            loadUsers(); // Yeniden yükle
+        } else {
+            alert("Yanlış şifre!");
+        }
+    }
+
+    function activateUser(index) {
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const password = prompt("Şifreyi girin:");
+
+        if (password === "1536") {
+            users[index].active = true; // Kullanıcıyı aç
+            localStorage.setItem('users', JSON.stringify(users));
+            loadUsers(); // Yeniden yükle
+        } else {
+            alert("Yanlış şifre!");
+        }
+    }
+
+    function deleteUser(index) {
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const password = prompt("Şifreyi girin:");
+
+        if (password === "1536") {
+            users.splice(index, 1); // Kullanıcıyı sil
+            localStorage.setItem('users', JSON.stringify(users));
+            loadUsers(); // Yeniden yükle
+        } else {
+            alert("Yanlış şifre!");
+        }
+    }
+
+    // Sayfa yüklendiğinde gerekli verileri yükle
+    window.onload = function() {
+        loadCodes();
+        loadApis();
+        loadUsers();
+    }
+</script>
+
+</body>
+</html>
