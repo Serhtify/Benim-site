@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serhat.Dev.tc - Yönetici Girişi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            color: black;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            border: none;
+            background-color: violet;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .message {
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Kontrol Paneli Girişi</h2>
+    <input type="text" id="admin-username" placeholder="Kullanıcı Adı" required>
+    <input type="password" id="admin-password" placeholder="Şifre" required>
+    <input type="text" id="verification-code" placeholder="Doğrulama Kodu" required>
+    <button onclick="adminLogin()">Giriş Yap</button>
+    <div class="message" id="admin-message"></div>
+</div>
+
+<script>
+    const adminUsername = "serhat";
+    const adminPassword = "atabeys";
+    const verificationCode = "1536";
+
+    function adminLogin() {
+        const username = document.getElementById('admin-username').value;
+        const password = document.getElementById('admin-password').value;
+        const code = document.getElementById('verification-code').value;
+
+        if (username === adminUsername && password === adminPassword && code === verificationCode) {
+            window.location.href = "yozel.html"; // Kontrol paneline yönlendirme
+        } else {
+            document.getElementById('admin-message').innerText = "Hatalı giriş! Lütfen bilgilerinizi kontrol edin.";
+        }
+    }
+</script>
+
+</body>
+</html>
