@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kayıt Ol - Serhat.Dev</title>
+    <title>Giriş Yap - Serhat.Dev</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -52,40 +52,34 @@
 </head>
 <body>
 
-<h1>Serhat.Dev - Kayıt Ol</h1>
+<h1>Serhat.Dev - Giriş Yap</h1>
 
 <div class="input-group">
     <input type="text" id="username" placeholder="Kullanıcı Adı" />
     <input type="password" id="password" placeholder="Şifre" />
-    <button onclick="register()">Kayıt Ol</button>
+    <button onclick="login()">Giriş Yap</button>
 </div>
 
-<p>Zaten üye misiniz? <a href="girişyap.html">Giriş Yap</a></p>
+<p>Henüz üye değil misiniz? <a href="index.html">Kayıt Ol</a></p>
 
 <script>
-    function register() {
+    function login() {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
-
-        if (username === '' || password === '') {
-            alert("Lütfen tüm alanları doldurun!");
-            return;
-        }
-
         const users = JSON.parse(localStorage.getItem('users')) || [];
-        const existingUser = users.find(u => u.name === username);
 
-        if (existingUser) {
-            alert("Bu kullanıcı adı zaten alınmış!");
-            return;
-        }
-
-        // Yeni kullanıcı ekle
-        users.push({ name: username, password: password, active: true });
-        localStorage.setItem('users', JSON.stringify(users));
+        const user = users.find(u => u.name === username && u.password === password);
         
-        alert("Kayıt başarılı! Giriş yapabilirsiniz.");
-        window.location.href = 'girişyap.html'; // Giriş yap sayfasına yönlendirme
+        if (user) {
+            if (user.active === false) {
+                alert("Hesabınız devre dışı bırakılmıştır. Lütfen yöneticinize başvurun.");
+            } else {
+                alert("Giriş başarılı!");
+                window.location.href = 'anasayfa.html'; // Kontrol paneline yönlendirme
+            }
+        } else {
+            alert("Kullanıcı adı veya şifre yanlış Veya Hesabınız Silinmişitr");
+        }
     }
 </script>
 
